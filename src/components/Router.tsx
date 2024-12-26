@@ -8,6 +8,8 @@ import { ClientsPage } from '@/pages/clients/ClientsPage';
 import { LoansPage } from '@/pages/loans/LoansPage';
 import { ConfigurationPage } from '@/pages/configuration/ConfigurationPage';
 import { CreateLoanPage } from '@/pages/loans/CreateLoanPage';
+import { CreatePaymentPage } from '@/pages/payments/CreatePaymentPage';
+import { PaymentsListPage } from '@/pages/payments/PaymentsListPage';
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
@@ -43,6 +45,8 @@ export function Router() {
           <Route path="loans" element={<LoansPage />} />
           <Route path="configuration" element={<ConfigurationPage />} />
           <Route path='loans/create' element={<CreateLoanPage/>}/>
+          <Route path="/payments/create" element={<CreatePaymentPage />} />
+          <Route path="/payments" element={<PaymentsListPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

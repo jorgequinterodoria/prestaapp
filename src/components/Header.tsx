@@ -9,7 +9,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="flex h-16 items-center px-6">
         <div className="flex flex-1 items-center justify-between">
-          <h1 className="text-xl font-semibold">Loan Management System</h1>
+          <h1 className="text-xl font-semibold">PrestaApp</h1>
           <Button
             variant="ghost"
             size="icon"

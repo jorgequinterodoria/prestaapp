@@ -63,7 +63,7 @@ export function ClientsPage() {
 
   const handleAddClient = async () => {
     if (!newClient.fullName) {
-      toast.error('Name is required');
+      toast.error('El nombre es obligatorio');
       return;
     }
 
@@ -94,9 +94,9 @@ export function ClientsPage() {
         address: ''
       });
       setDialogOpen(false);
-      toast.success('Client added successfully');
+      toast.success('Cliente agregado exitosamente!');
     } catch (error) {
-      toast.error('Error adding client');
+      toast.error('Error agregando cliente');
       console.error('Error:', error);
     }
   };
@@ -111,9 +111,9 @@ export function ClientsPage() {
       if (error) throw error;
 
       setClients(clients.filter(client => client.id !== id));
-      toast.success('Client deleted successfully');
+      toast.success('Cliente eliminado exitosamente!');
     } catch (error) {
-      toast.error('Error deleting client');
+      toast.error('Error eliminando cliente');
       console.error('Error:', error);
     }
   };
@@ -121,38 +121,38 @@ export function ClientsPage() {
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-semibold">Clients</h1>
+        <h1 className="text-2xl font-semibold">Clientes</h1>
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
           <DialogTrigger asChild>
-            <Button>Add Client</Button>
+            <Button>Agregar Cliente</Button>
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Add New Client</DialogTitle>
+              <DialogTitle>Agregar Nuevo Cliente</DialogTitle>
             </DialogHeader>
             <div className="space-y-4 py-4">
               <Input
-                placeholder="Full Name"
+                placeholder="Nombre Completo"
                 value={newClient.fullName}
                 onChange={(e) =>
                   setNewClient({ ...newClient, fullName: e.target.value })
                 }
               />
               <Input
-                placeholder="Phone"
+                placeholder="Teléfono"
                 value={newClient.phone}
                 onChange={(e) =>
                   setNewClient({ ...newClient, phone: e.target.value })
                 }
               />
               <Input
-                placeholder="Address"
+                placeholder="Dirección"
                 value={newClient.address}
                 onChange={(e) =>
                   setNewClient({ ...newClient, address: e.target.value })
                 }
               />
-              <Button onClick={handleAddClient}>Save</Button>
+              <Button onClick={handleAddClient}>Guardar</Button>
             </div>
           </DialogContent>
         </Dialog>
@@ -166,10 +166,10 @@ export function ClientsPage() {
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>Name</TableHead>
-              <TableHead>Phone</TableHead>
-              <TableHead>Address</TableHead>
-              <TableHead>Actions</TableHead>
+              <TableHead>Nombre</TableHead>
+              <TableHead>Teléfono</TableHead>
+              <TableHead>Dirección</TableHead>
+              <TableHead>Acciones</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -184,7 +184,7 @@ export function ClientsPage() {
                     size="sm"
                     onClick={() => handleDeleteClient(client.id)}
                   >
-                    Delete
+                    Eliminar
                   </Button>
                 </TableCell>
               </TableRow>

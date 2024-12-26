@@ -5,13 +5,15 @@ import {
   Users,
   Wallet,
   Settings,
+  DollarSign,
 } from 'lucide-react';
 
 const navigation = [
   { name: 'Dashboard', href: '/', icon: LayoutDashboard },
-  { name: 'Clients', href: '/clients', icon: Users },
-  { name: 'Loans', href: '/loans', icon: Wallet },
-  { name: 'Configuration', href: '/configuration', icon: Settings },
+  { name: 'Clientes', href: '/clients', icon: Users },
+  { name: 'Préstamos', href: '/loans', icon: Wallet },
+  { name: 'Pagos', href: '/payments', icon: DollarSign },
+  { name: 'Configuración', href: '/configuration', icon: Settings },
 ];
 
 export function Sidebar() {

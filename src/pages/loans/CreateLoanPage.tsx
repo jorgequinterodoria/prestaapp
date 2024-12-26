@@ -95,7 +95,7 @@ export function CreateLoanPage() {
         })) || []);
 
       } catch (error) {
-        toast.error('Error loading form data');
+        toast.error('Error cargando los datos');
         console.error('Error:', error);
       } finally {
         setIsLoading(false);
@@ -130,7 +130,7 @@ export function CreateLoanPage() {
             }
           }
         } catch (error) {
-          console.error('Error calculating installments:', error);
+          console.error('Error calculando las cuotas:', error);
         }
       }
     }
@@ -177,7 +177,7 @@ export function CreateLoanPage() {
   const handleSubmit = async () => {
     if (!newLoan.clientId || !newLoan.amount || !newLoan.interestRateId || 
         !newLoan.paymentFrequencyId || !newLoan.startDate || !newLoan.type || !newLoan.cuote) {
-      toast.error('Please fill all required fields');
+      toast.error('Por favor llene todos los campos requeridos');
       return;
     }
 
@@ -200,10 +200,10 @@ export function CreateLoanPage() {
 
       if (error) throw error;
 
-      toast.success('Loan created successfully');
+      toast.success('Préstamo creado exitosamente');
       navigate('/loans');
     } catch (error) {
-      toast.error('Error creating loan');
+      toast.error('Error creando préstamo');
       console.error('Error:', error);
     }
   };
@@ -219,16 +219,16 @@ export function CreateLoanPage() {
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-semibold">Create New Loan</h1>
+        <h1 className="text-2xl font-semibold">Crear Nuevo Préstamo</h1>
         <Button variant="outline" onClick={() => navigate('/loans')}>
-          Back to Loans
+          Regresar a Préstamos
         </Button>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card>
           <CardHeader>
-            <CardTitle>Loan Details</CardTitle>
+            <CardTitle>Detalles del Préstamo</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <Select
@@ -237,7 +237,7 @@ export function CreateLoanPage() {
               }
             >
               <SelectTrigger>
-                <SelectValue placeholder="Select Client" />
+                <SelectValue placeholder="Seleccione Cliente" />
               </SelectTrigger>
               <SelectContent>
                 {clients.map((client) => (
@@ -250,7 +250,7 @@ export function CreateLoanPage() {
 
             <Input
               type="number"
-              placeholder="Amount"
+              placeholder="Cantidad"
               value={newLoan.amount}
               onChange={(e) =>
                 setNewLoan({ ...newLoan, amount: e.target.value })
@@ -263,7 +263,7 @@ export function CreateLoanPage() {
               }
             >
               <SelectTrigger>
-                <SelectValue placeholder="Select Interest Rate" />
+                <SelectValue placeholder="Seleccione tasa de interés" />
               </SelectTrigger>
               <SelectContent>
                 {interestRates.map((rate) => (
@@ -280,7 +280,7 @@ export function CreateLoanPage() {
               }
             >
               <SelectTrigger>
-                <SelectValue placeholder="Select Payment Frequency" />
+                <SelectValue placeholder="Seleccione frecuencia de pago" />
               </SelectTrigger>
               <SelectContent>
                 {paymentPeriods.map((period) => (
@@ -302,7 +302,7 @@ export function CreateLoanPage() {
               }}
             >
               <SelectTrigger>
-                <SelectValue placeholder="Select Loan Type" />
+                <SelectValue placeholder="Seleccione tipo de préstamo" />
               </SelectTrigger>
               <SelectContent>
                 {LOAN_TYPES.map((type) => (
@@ -316,7 +316,7 @@ export function CreateLoanPage() {
             {newLoan.type === 'fixed_installment' && (
               <Input
                 type="number"
-                placeholder="Number of Installments"
+                placeholder="Número de cuotas"
                 value={newLoan.numInstallments}
                 onChange={(e) =>
                   setNewLoan({ ...newLoan, numInstallments: e.target.value })
@@ -334,7 +334,7 @@ export function CreateLoanPage() {
 
             <Input
               type="number"
-              placeholder="Cuote"
+              placeholder="Cuota"
               value={newLoan.cuote}
               onChange={(e) =>
                 setNewLoan({ ...newLoan, cuote: e.target.value })
@@ -343,9 +343,9 @@ export function CreateLoanPage() {
 
             <div className="flex justify-end gap-2">
               <Button variant="outline" onClick={() => navigate('/loans')}>
-                Cancel
+                Cancelar
               </Button>
-              <Button onClick={handleSubmit}>Create Loan</Button>
+              <Button onClick={handleSubmit}>Crear Préstamo</Button>
             </div>
           </CardContent>
         </Card>
@@ -353,7 +353,7 @@ export function CreateLoanPage() {
         {newLoan.type === 'fixed_installment' && installmentPreviews.length > 0 && (
           <Card>
             <CardHeader>
-              <CardTitle>Amortization Schedule</CardTitle>
+              <CardTitle>Tabla de Amortización</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="border rounded-lg">
